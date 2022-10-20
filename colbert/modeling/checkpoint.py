@@ -65,6 +65,21 @@ class Checkpoint(ColBERT):
             batches = [self.doc(input_ids, attention_mask, keep_dims=keep_dims_, to_cpu=to_cpu)
                        for input_ids, attention_mask in tqdm(text_batches, disable=not showprogress)]
 
+            class ForkedPdb(pdb.Pdb):
+                """A Pdb subclass that may be used
+                from a forked multiprocessing child
+                """
+
+                def interaction(self, *args, **kwargs):
+                    _stdin = sys.stdin
+                    try:
+                        sys.stdin = open("/dev/stdin")
+                        pdb.Pdb.interaction(self, *args, **kwargs)
+                    finally:
+                        sys.stdin = _stdin
+
+            ForkedPdb().set_trace()
+
             if keep_dims is True:
                 D = _stack_3D_tensors(batches)
                 return (D[reverse_indices], *returned_text)
