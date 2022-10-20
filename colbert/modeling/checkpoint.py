@@ -65,6 +65,9 @@ class Checkpoint(ColBERT):
             batches = [self.doc(input_ids, attention_mask, keep_dims=keep_dims_, to_cpu=to_cpu)
                        for input_ids, attention_mask in tqdm(text_batches, disable=not showprogress)]
 
+            from multiprocessing import Pool
+            import sys
+            import pdb
             class ForkedPdb(pdb.Pdb):
                 """A Pdb subclass that may be used
                 from a forked multiprocessing child
