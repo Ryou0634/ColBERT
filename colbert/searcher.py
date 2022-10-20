@@ -65,6 +65,7 @@ class Searcher:
         queries_ = list(queries.values())
 
         Q = self.encode(queries_)
+        breakpoint()
 
         return self._search_all_Q(queries, Q, k, filter_fn=filter_fn)
 

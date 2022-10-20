@@ -330,7 +330,7 @@ class CollectionIndexer():
                 else:
                     assert embs.dtype == torch.float32
                     embs = embs.half()
-
+            
                 Run().print_main(f"#> Saving chunk {chunk_idx}: \t {len(passages):,} passages "
                                  f"and {embs.size(0):,} embeddings. From #{offset:,} onward.")
 
