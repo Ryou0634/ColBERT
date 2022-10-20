@@ -53,7 +53,7 @@ class Checkpoint(ColBERT):
         assert keep_dims in [True, False, 'flatten']
 
         if bsize:
-            text_batches, reverse_indices = self.doc_tokenizer.tensorize(docs[:1], bsize=bsize)
+            text_batches, reverse_indices = self.doc_tokenizer.tensorize(docs, bsize=bsize)
 
             returned_text = []
             if return_tokens:
