@@ -7,7 +7,7 @@ if __name__ == "__main__":
     root = "data/official_colbert"
     index_name = "msmarco.nbits=2"
     checkpoint_path = "/data/local/li0123/soseki-dev/data/colbertv2.0"
-    msmarco_path = "/data/local/li0123/soseki-dev/data/msmarco/raw_sanity_check"
+    msmarco_path = "/data/local/li0123/soseki-dev/data/msmarco/raw_large"
 
     with Run().context(RunConfig(nranks=1, experiment="msmarco")):
 
